@@ -1,8 +1,18 @@
-
 import tkinter as tk
 from tkinter import ttk
-from tkinter import messagebox
+
+ventana = tk.Tk()
+ventana.title("Biblioteca Personal")
+ventana.geometry("800x600")
+ventana.configure(bg="#181818")
+
+# BLOQUE IZQUIERDO
+bloque_izquierdo = tk.Frame(ventana, bg="#1f1f1f", width=250, bd=1, highlightbackground="#2b2b2b", highlightthickness=1)
+bloque_izquierdo.pack(side="left", fill="y")
+imagen_logo = tk.PhotoImage(file="BIBLIOTECA_PERSONAL\logo-mibi.png").subsample(3, 3) 
+logo = tk.Label(bloque_izquierdo, image=imagen_logo, bg="#1f1f1f")
+logo.pack(side="top", anchor="n", pady=10, padx=10)
 
 
 
-
+ventana.mainloop()
