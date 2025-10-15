@@ -13,7 +13,82 @@ libros = []
 
 # FUNCIONES 
 def modificar_libro():
-    print("Función de modificar libro no implementada aún.")
+    seleccion = categoria.selection()
+    if not seleccion:
+        messagebox.showwarning("Advertencia!!", "Selecciona un libro para editar!!")
+        return
+    
+    item = seleccion[0]
+    index = categoria.index(item)
+    libro = libros[index]
+
+    # Ventana de edición
+    ventana_editar = Toplevel(ventana)
+    ventana_editar.title("Editar Libro")
+    ventana_editar.geometry("400x300")
+    ventana_editar.configure(bg="#15171e")
+
+    etiquetas = ["Título:", "Autor:", "Año:", "Género:"]
+    valores = [libro["titulo"], libro["autor"], libro["año"], libro["genero"]]
+    entradas = []
+
+    for i in range(len(etiquetas)):
+        etiqueta = tk.Label(
+            ventana_editar, text=etiquetas[i],
+            bg="#15171e", fg="white", font=("Arial", 12)
+        )
+        etiqueta.grid(row=i, column=0, padx=10, pady=10, sticky="e")
+
+        entrada = tk.Entry(
+            ventana_editar, width=30,
+            bg="#252A36", fg="white", font=("Arial", 12), bd=0
+        )
+        entrada.insert(0, valores[i])
+        entrada.grid(row=i, column=1, padx=10, pady=10)
+        entradas.append(entrada)
+
+    def guardar_cambios():
+        nuevo_titulo = entradas[0].get().strip()
+        nuevo_autor = entradas[1].get().strip()
+        nuevo_anio = entradas[2].get().strip()
+        nuevo_genero = entradas[3].get().strip()
+
+        if not (nuevo_titulo and nuevo_autor and nuevo_anio and nuevo_genero):
+            messagebox.showwarning("Campos Incompletos", "Por Favor, complete todos los campos")
+            return
+        
+        if not nuevo_anio.isdigit() or not (0 < int(nuevo_anio) <= 2025):
+            messagebox.showwarning("Año inválido", "Por favor ingrese un año válido")
+            return
+
+        # Actualizar lista
+        libros[index] = {
+            "titulo": nuevo_titulo,
+            "autor": nuevo_autor,
+            "año": nuevo_anio,
+            "genero": nuevo_genero
+        }
+
+        actualizar_tabla()
+        ventana_editar.destroy()
+        messagebox.showinfo("Éxito", "El libro fue editado correctamente")
+
+    #Botones
+    boton_guardar = tk.Button(
+        ventana_editar, text="Guardar Cambios",
+        bg="#252A36", fg="white", font=("Arial", 12, "bold"),
+        bd=0, command=guardar_cambios
+    )
+    boton_guardar.grid(row=len(etiquetas), column=1, pady=20, sticky="e")
+
+    boton_cancelar = tk.Button(
+        ventana_editar, text="Cancelar",
+        bg="#252A36", fg="white", font=("Arial", 12, "bold"),
+        bd=0, command=ventana_editar.destroy
+    )
+    boton_cancelar.grid(row=len(etiquetas), column=1, pady=20, sticky="w")
+        
+    
 
 def eliminar_libro():
     seleccion = categoria.selection()
@@ -94,7 +169,7 @@ bloque_izquierdo = tk.Frame(ventana, bg="#1b1e27", width=300, bd=1, highlightbac
 bloque_izquierdo.pack(side="left", fill="y", padx=5, pady=5)
 bloque_izquierdo.pack_propagate(False)
 
-imagen_logo = tk.PhotoImage(file="BIBLIOTECA_PERSONAL\logo-mibi.png").subsample(4, 4)
+imagen_logo = tk.PhotoImage(file=r"C:\Users\JERONIMO\OneDrive\Escritorio\BIB_ITEC\logo-mibi.png").subsample(4, 4)
 logo = tk.Label(bloque_izquierdo, image=imagen_logo, bg="#1b1e27")
 logo.image = imagen_logo
 logo.pack(side="bottom", anchor="n", pady=10, padx=10)
