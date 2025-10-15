@@ -51,9 +51,9 @@ def modificar_libro():
     entradas = []
 
     for i in range(len(etiquetas)):  
-        etiqueta = tk.Label(ventana_editar, text=etiquetas[i], bg="#15171e", fg="white", font=("Arial", 12))
+        etiqueta = tk.Label(ventana_editar, text=etiquetas[i], bg="#15171e", fg="#bdbdbe", font=("Arial", 12))
         etiqueta.grid(row=i, column=0, padx=10, pady=10, sticky="e")  
-        entrada = tk.Entry(ventana_editar, width=30, bg="#252A36", fg="white", font=("Arial", 12), bd=0)
+        entrada = tk.Entry(ventana_editar, width=30, bg="#252A36", fg="#bdbdbe", font=("Arial", 12), bd=0)
         entrada.grid(row=i, column=1, padx=10, pady=10)
         if i < len(libro_seleccionado):
             entrada.insert(0, libro_seleccionado[i])
@@ -84,10 +84,10 @@ def modificar_libro():
         actualizar_tabla_filtros()
         ventana_editar.destroy()
 
-    boton_aceptar = tk.Button(ventana_editar, text="Guardar", bg="#252A36", fg="white", font=("Arial", 12), command=guardar_modificacion)
+    boton_aceptar = tk.Button(ventana_editar, text="Guardar", bg="#252A36", fg="#bdbdbe", font=("Arial", 12), command=guardar_modificacion)
     boton_aceptar.grid(row=len(etiquetas), column=1, padx=10, pady=20, sticky="e")
 
-    boton_cancelar = tk.Button(ventana_editar, text="Cancelar", bg="#252A36", fg="white", font=("Arial", 12), command=ventana_editar.destroy)
+    boton_cancelar = tk.Button(ventana_editar, text="Cancelar", bg="#252A36", fg="#bdbdbe", font=("Arial", 12), command=ventana_editar.destroy)
     boton_cancelar.grid(row=len(etiquetas), column=0, padx=10, pady=20, sticky="w")
 
 def eliminar_libro():
@@ -139,9 +139,9 @@ def abrir_ventana_agregar():
         entradas = []
 
         for i in range(len(etiquetas)):  
-            etiqueta = tk.Label(ventana_agregar, text=etiquetas[i], bg="#15171e", fg="white", font=("Arial", 12))
+            etiqueta = tk.Label(ventana_agregar, text=etiquetas[i], bg="#15171e", fg="#bdbdbe", font=("Arial", 12))
             etiqueta.grid(row=i, column=0, padx=10, pady=10, sticky="e")  
-            entrada = tk.Entry(ventana_agregar, width=30, bg="#252A36", fg="white", font=("Arial", 12), bd=0)
+            entrada = tk.Entry(ventana_agregar, width=30, bg="#252A36", fg="#bdbdbe", font=("Arial", 12), bd=0)
             entrada.grid(row=i, column=1, padx=10, pady=10)
             entradas.append(entrada)
             
@@ -168,10 +168,10 @@ def abrir_ventana_agregar():
             actualizar_tabla_filtros()
             ventana_agregar.destroy() 
             
-        boton_aceptar = tk.Button(ventana_agregar, text="Aceptar", bg="#252A36", fg="white", font=("Arial", 12), command=validar_entradas)
+        boton_aceptar = tk.Button(ventana_agregar, text="Aceptar", bg="#252A36", fg="#bdbdbe", font=("Arial", 12), command=validar_entradas)
         boton_aceptar.grid(row=len(etiquetas), column=1, padx=10, pady=20, sticky="e")
 
-        boton_cancelar = tk.Button(ventana_agregar, text="Cancelar", bg="#252A36", fg="white", font=("Arial", 12), command=ventana_agregar.destroy)
+        boton_cancelar = tk.Button(ventana_agregar, text="Cancelar", bg="#252A36", fg="#bdbdbe", font=("Arial", 12), command=ventana_agregar.destroy)
         boton_cancelar.grid(row=len(etiquetas), column=1, padx=10, pady=20, sticky="w")
 
 
@@ -227,14 +227,14 @@ barra_superior.pack_propagate(False)
 busqueda_frame = tk.Frame(barra_superior, bg="#1b1e27")
 busqueda_frame.pack(side="right", padx=15, pady=10)
 
-label_buscar = tk.Label(busqueda_frame, text="BUSCAR:", bg="#1b1e27", fg="white",font=("Arial", 13, "bold"))
+label_buscar = tk.Label(busqueda_frame, text="BUSCAR:", bg="#1b1e27", fg="#bdbdbe",font=("Arial", 13, "bold"))
 label_buscar.pack(side="left", padx=(0, 5))
 
-entry_buscar = tk.Entry(busqueda_frame, width=20, bg="#252A36", fg="white",font=("Arial", 13), bd=0)
+entry_buscar = tk.Entry(busqueda_frame, width=20, bg="#252A36", fg="#bdbdbe",font=("Arial", 13), bd=0)
 entry_buscar.pack(side="left", padx=5)
 
 # BOTON BUSCAR
-boton_buscar = tk.Button(busqueda_frame, text="BUSCAR", bg="#252A36", fg="white", font=("Arial", 12, "bold"), command=buscar_libro)
+boton_buscar = tk.Button(busqueda_frame, text="BUSCAR",  bg="#252A36", bd=0, fg="#bdbdbe", font=("Arial", 12, "bold"), command=buscar_libro)
 boton_buscar.pack(side="left", padx=(10, 0))
 
 # FILTROS DE BÚSQUEDA
@@ -242,28 +242,28 @@ filtros_frame = tk.Frame(barra_superior, bg="#1b1e27")
 filtros_frame.pack(side="left", padx=20, pady=10)
 
     # Autor
-lbl_autor = tk.Label(filtros_frame, text="Autor:", bg="#1b1e27", fg="white", font=("Arial", 13, "bold"))
+lbl_autor = tk.Label(filtros_frame, text="Autor:", bg="#1b1e27", fg="#bdbdbe", font=("Arial", 13, "bold"))
 lbl_autor.pack(side="left", padx=(0, 5))
 
 autor_combobox = ttk.Combobox(filtros_frame, values=[], width=12, state="readonly")
 autor_combobox.pack(side="left", padx=5)
 
     # Año
-lbl_anio = tk.Label(filtros_frame, text="Año:", bg="#1b1e27", fg="white",font=("Arial", 13, "bold"))
+lbl_anio = tk.Label(filtros_frame, text="Año:", bg="#1b1e27", fg="#bdbdbe",font=("Arial", 13, "bold"))
 lbl_anio.pack(side="left", padx=(10, 5))
 
 año_combobox = ttk.Combobox(filtros_frame, values=[], width=8, state="readonly")
 año_combobox.pack(side="left", padx=5)
 
     # Género
-lbl_genero = tk.Label(filtros_frame, text="Género:", bg="#1b1e27", fg="white",font=("Arial", 13, "bold"))
+lbl_genero = tk.Label(filtros_frame, text="Género:", bg="#1b1e27", fg="#bdbdbe",font=("Arial", 13, "bold"))
 lbl_genero.pack(side="left", padx=(10, 5))
 
 genero_combobox = ttk.Combobox(filtros_frame, values=[], width=12, state="readonly")
 genero_combobox.pack(side="left", padx=5)
 
 # BOTON DE FILTROS
-boton_filtros = tk.Button(filtros_frame, text="FILTRAR", bg="#252A36", fg="white", font=("Arial", 12, "bold"), command=filtrar_libros)
+boton_filtros = tk.Button(filtros_frame, text="FILTRAR",  bg="#252A36", bd=0, fg="#bdbdbe", font=("Arial", 12, "bold"), command=filtrar_libros)
 boton_filtros.pack(side="left", padx=(10, 0))
 
 # LISTA DE LIBROS
@@ -271,8 +271,8 @@ lista_frame = tk.Frame(contenido_principal, bg="#1b1e27")
 lista_frame.pack(side="top", fill="both", expand=True, padx=5, pady=5)
 estilo = ttk.Style()
 estilo.theme_use('default')
-estilo.configure("Treeview", background="#252A36", foreground="white",fieldbackground="#252A36",  borderwidth=0, font=("Arial", 11))
-estilo.configure("Treeview.Heading",background="#1b1e27",foreground="white",borderwidth=0,font=("Arial", 11, "bold"))
+estilo.configure("Treeview", background="#252A36", foreground="#bdbdbe",fieldbackground="#252A36",  borderwidth=0, font=("Arial", 11))
+estilo.configure("Treeview.Heading",background="#1b1e27",foreground="#bdbdbe",borderwidth=0,font=("Arial", 11, "bold"))
 
 # Columnas libros
 columnas = ("titulo", "autor", "año", "genero")
@@ -296,23 +296,23 @@ categoria.pack(side="left", fill="both", expand=True)
 scrollbar.pack(side="right", fill="y")
 
 # BARRA INFERIOR
-barra_inf = tk.Label(contenido_principal, text="Mostrando 0 libro(s). Total: 0.", bg="#1b1e27", fg="white", font=("Arial", 10))
+barra_inf = tk.Label(contenido_principal, text="Mostrando 0 libro(s). Total: 0.", bg="#1b1e27", fg="#bdbdbe", font=("Arial", 10))
 barra_inf.pack(side="bottom", fill="x", padx=5, pady=5)
 
 # BOTONES
-boton_agregar = tk.Button(bloque_izquierdo, text="+ AGREGAR", bg="#252A36",height=5,bd=0, fg="white",font=("Arial", 12, "bold"), command=abrir_ventana_agregar)
+boton_agregar = tk.Button(bloque_izquierdo, text="+ AGREGAR", bg="#252A36",height=5,bd=0, fg="#bdbdbe",font=("Arial", 12, "bold"), command=abrir_ventana_agregar)
 boton_agregar.pack( fill="x",pady=5,padx=5)
 boton_agregar.pack_propagate(False)
 
-boton_eliminar = tk.Button(bloque_izquierdo, text="- ELIMINAR", bg="#252A36",height=5,bd=0, fg="white",font=("Arial", 12, "bold"), command=eliminar_libro)
+boton_eliminar = tk.Button(bloque_izquierdo, text="- ELIMINAR", bg="#252A36",height=5,bd=0, fg="#bdbdbe",font=("Arial", 12, "bold"), command=eliminar_libro)
 boton_eliminar.pack( fill="x",pady=5,padx=5)
 boton_eliminar.pack_propagate(False)
 
-boton_editar= tk.Button(bloque_izquierdo, text="✐ EDITAR", bg="#252A36",height=5,bd=0, fg="white",font=("Arial", 12, "bold"), command=modificar_libro)
+boton_editar= tk.Button(bloque_izquierdo, text="✐ EDITAR", bg="#252A36",height=5,bd=0, fg="#bdbdbe",font=("Arial", 12, "bold"), command=modificar_libro)
 boton_editar.pack( fill="x",pady=5,padx=5)
 boton_editar.pack_propagate(False)
 
-boton_mostrar_todo = tk.Button(bloque_izquierdo, text="LIMPIAR FILTROS", bg="#252A36",height=5,bd=0,fg="white",font=("Arial", 12, "bold"), command=mostrar_todos_libros)
+boton_mostrar_todo = tk.Button(bloque_izquierdo, text="LIMPIAR FILTROS", bg="#252A36",height=5,bd=0,fg="#bdbdbe",font=("Arial", 12, "bold"), command=mostrar_todos_libros)
 boton_mostrar_todo.pack( fill="x",pady=5,padx=5)
 boton_mostrar_todo.pack_propagate(False)
 
